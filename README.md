@@ -1,0 +1,1 @@
+This is a play area for c++ libraries. Not so much for anything else. This branch specifically I'm playing with sys library to familiarize myself with most of it's provided functionality as well as to practice OOP Design.
