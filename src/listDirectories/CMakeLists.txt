@@ -1,0 +1,1 @@
+add_executable(listDirectories main.cpp)
