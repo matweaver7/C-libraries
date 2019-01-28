@@ -16,6 +16,7 @@ int main(int argc, char *argv[]) {
         in6addr_any,
         0     
     };
+    bool keepFiring = true;
     sockFD = socket(AF_INET6, SOCK_STREAM, IPPROTO_TCP);
     if (sockFD < 0) {
         cout << "failed" << endl;
@@ -30,6 +31,10 @@ int main(int argc, char *argv[]) {
     cout << "sucess bind" << endl;
 
     listen(sockFD, 50);
+    
+    while (keepFiring) {
+        
+    }
 
     close(sockFD);
 
