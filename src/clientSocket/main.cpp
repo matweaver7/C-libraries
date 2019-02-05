@@ -52,15 +52,15 @@ int main(int argc, char *argv[])
 		return EXIT_FAILURE;
 	}
  
-	// /* Wait for data from server */
-	// ret = read(sock_fd, &ch, 1);
-	// if (ret == -1) {
-	// 	perror("read()");
-	// 	close(sock_fd);
-	// 	return EXIT_FAILURE;
-	// }
+	/* Wait for data from server */
+	ret = read(sock_fd, &ch, 1);
+	if (ret == -1) {
+		perror("read()");
+		close(sock_fd);
+		return EXIT_FAILURE;
+	}
  
-	// printf("Received %c from server\n", ch);
+	printf("Received %c from server\n", ch);
  
 	/* DO TCP teardown */
 	ret = close(sock_fd);

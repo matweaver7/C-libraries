@@ -1,5 +1,7 @@
 #include "socketInterface.h"
+#include "clientConnection/clientConnection.h"
 
+//TO-DO: prune unnecessary libraries
 #include <iostream>
 #include <sys/types.h>
 #include <sys/socket.h>
@@ -57,12 +59,13 @@ void socketInterface::listenInterface(void (*dataHandler)(void *)) {
             closeInterface();
         } 
 
-        // right now it's just a character. Will optimize for larger data sets.
-        // the idea of dynamic handling is there though.
-        char ch;
-        if (read(clientSock, &ch, sizeof(ch)) > 0) {
-            dataHandler(&ch);
-        }
+        clientConnection* client = new clientConnection(clientSock);
+        char ch = client->read();
+        // THIS IS BAD!!! DON'T DO THIS. MEMORY MNGMT 101! FIX THIS!!!!
+        dataHandler(&ch);
+
+        client->write('s');
+
     }
 };
 void socketInterface::closeInterface() {
